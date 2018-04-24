@@ -30,9 +30,6 @@ extension QiitaTargetType {
     var headers: [String: String]? {
         return nil
     }
-    var sampleData: Data {
-        return Data()
-    }
 }
 
 enum Qiita {
@@ -41,7 +38,7 @@ enum Qiita {
 
 class Api {
     static let shared = Api()
-    private let provider = MoyaProvider<MultiTarget>()
+    private let provider = MoyaProvider<MultiTarget>(stubClosure: MoyaProvider.delayedStub(2))
 
     func request<R>(_ request: R) -> Single<R.Response> where R: QiitaTargetType {
         let target = MultiTarget(request)

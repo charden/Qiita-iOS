@@ -1,8 +1,8 @@
 //
-//  Api+Item.swift
+//  Api+Ad.swift
 //  Qiita-ios
 //
-//  Created by Takuya on 2018/03/17.
+//  Created by Takuya Ogawa on 2018/04/24.
 //  Copyright © 2018年 Takuya. All rights reserved.
 //
 
@@ -10,11 +10,10 @@ import UIKit
 import Moya
 
 extension Qiita {
-    struct GetItem: QiitaTargetType {
-
-        typealias Response = [Item]
+    struct GetAd: QiitaTargetType {
+        typealias Response = [Ad]
         var path: String {
-            return "/items"
+            return "/ad"
         }
 
         var method: Moya.Method {
@@ -24,9 +23,8 @@ extension Qiita {
         var task: Task {
             return .requestPlain
         }
-
         var sampleData: Data {
-            return FileHandle(forReadingAtPath: R.file.feedJson.path()!)!.readDataToEndOfFile()
+            return FileHandle(forReadingAtPath: R.file.sampleJson.path()!)!.readDataToEndOfFile()
         }
     }
 }
